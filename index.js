@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 // initialize app
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.use(express.json());
 
 // config env
 dotenv.config({ path: "./config.env" });
@@ -15,7 +16,11 @@ mongoose
   .then((data) => console.log("mongoose connected"))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => {
+// import routes
+const user = require("./routes/user");
+app.use("/api/users", user);
+
+app.get("/api", (req, res) => {
   res.json({ msg: "home page" });
 });
 
