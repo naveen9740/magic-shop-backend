@@ -31,7 +31,7 @@ const ProductSchema = new mongoose.Schema(
       required: [true, "Please Enter Product Price"],
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Product", ProductSchema);

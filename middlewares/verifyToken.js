@@ -22,9 +22,10 @@ const verifyTokenAndAuthorization = (req, res, next) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       next();
     } else {
-      res
-        .status(403)
-        .json({ success: false, error: "you are not allowed to update" });
+      res.status(403).json({
+        success: false,
+        error: "you are not allowed to update",
+      });
     }
   });
 };
