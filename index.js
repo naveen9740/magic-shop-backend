@@ -18,7 +18,9 @@ mongoose
 
 // import routes
 const auth = require("./routes/auth");
+const user = require("./routes/userRoute");
 app.use("/api/v1", auth);
+app.use("/api/v1/users", user);
 
 app.listen(PORT, () => {
   console.log(`server started at ${PORT}`);
