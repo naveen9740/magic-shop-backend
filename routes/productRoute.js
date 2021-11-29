@@ -50,9 +50,7 @@ router
       const product = await Product.findOne({ id });
       res.json({ success: true, product });
     } catch (error) {
-      res
-        .status(500)
-        .json({ success: false, error: error.message, ss: req.params.id });
+      res.status(500).json({ success: false, error: error.message });
     }
   });
 

@@ -20,10 +20,14 @@ mongoose
 const auth = require("./routes/auth");
 const user = require("./routes/userRoute");
 const product = require("./routes/productRoute");
+const cart = require("./routes/cartRoute");
+const order = require("./routes/orderRoutes");
 
 app.use("/api/v1", auth);
 app.use("/api/v1/users", user);
 app.use("/api/v1/products", product);
+app.use("/api/v1/cart", cart);
+app.use("/api/v1/order", order);
 
 app.listen(PORT, () => {
   console.log(`server started at ${PORT}`);
