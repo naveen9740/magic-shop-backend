@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 // config env
-// dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "./config.env" });
 
 // db connection
 mongoose
@@ -31,6 +31,10 @@ app.use("/api/v1/cart", cart);
 app.use("/api/v1/order", order);
 app.use("/api/v1/checkout", stripe);
 
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "Finally server started" });
+});
+
 app.listen(process.env.PORT || 5000, () => {
-  console.log(`server started at ${process.env.PORT} now`);
+  console.log(`server started at ${process.env.PORT || 5000} now`);
 });
