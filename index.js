@@ -32,5 +32,5 @@ app.use("/api/v1/order", order);
 app.use("/api/v1/checkout", stripe);
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log(`server started at ${PORT} now`);
+  console.log(`server started at ${process.env.PORT} now`);
 });
