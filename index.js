@@ -17,8 +17,8 @@ mongoose
   .catch((err) => console.log(err));
 
 // import routes
-const user = require("./routes/user");
-app.use("/api/users", user);
+const auth = require("./routes/auth");
+app.use("/api/auth", auth);
 
 app.get("/api", (req, res) => {
   res.json({ msg: "home page" });

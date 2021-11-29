@@ -14,15 +14,15 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please Enter your Password"],
-      min: [5, "Password should exceed 5 characters"],
-      max: [8, "Password should not exceed 8 characters"],
+      minlength: [5, "Password should exceed 5 characters"],
+      maxlength: [8, "Password should not exceed 8 characters"],
     },
     isAdmin: {
       type: Boolean,
       default: false,
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("User", UserSchema);
