@@ -18,11 +18,7 @@ mongoose
 
 // import routes
 const auth = require("./routes/auth");
-app.use("/api/auth", auth);
-
-app.get("/api", (req, res) => {
-  res.json({ msg: "home page" });
-});
+app.use("/api/v1", auth);
 
 app.listen(PORT, () => {
   console.log(`server started at ${PORT}`);

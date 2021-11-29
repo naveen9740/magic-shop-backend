@@ -14,8 +14,6 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please Enter your Password"],
-      minlength: [5, "Password should exceed 5 characters"],
-      maxlength: [8, "Password should not exceed 8 characters"],
     },
     isAdmin: {
       type: Boolean,
