@@ -22,12 +22,14 @@ const user = require("./routes/userRoute");
 const product = require("./routes/productRoute");
 const cart = require("./routes/cartRoute");
 const order = require("./routes/orderRoutes");
+const stripe = require("./routes/stripe");
 
 app.use("/api/v1", auth);
 app.use("/api/v1/users", user);
 app.use("/api/v1/products", product);
 app.use("/api/v1/cart", cart);
 app.use("/api/v1/order", order);
+app.use("/api/v1/checkout", stripe);
 
 app.listen(PORT, () => {
   console.log(`server started at ${PORT}`);
