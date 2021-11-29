@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 
 // initialize app
 const app = express();
-const PORT = process.env.PORT || 5000;
+
 app.use(express.json());
 
 // config env
@@ -31,6 +31,10 @@ app.use("/api/v1/cart", cart);
 app.use("/api/v1/order", order);
 app.use("/api/v1/checkout", stripe);
 
-app.listen(PORT, () => {
-  console.log(`server started at ${PORT}`);
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "Finally server started" });
+});
+
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`server started at ${process.env.PORT || 5000} now`);
 });
