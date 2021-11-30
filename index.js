@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 
 // initialize app
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
 // config env
