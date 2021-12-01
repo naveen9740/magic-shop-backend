@@ -42,17 +42,16 @@ router
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
     }
-  })
-  // Get Single Product
-  .get(async (req, res) => {
-    try {
-      const { id } = req.params;
-      const product = await Product.findOne({ id });
-      res.json({ success: true, product });
-    } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
-    }
   });
+// Get Single Product
+router.get("/find/:id", async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.json({ success: true, product });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
 // Get All Products
 router.get("/", async (req, res) => {
@@ -61,7 +60,7 @@ router.get("/", async (req, res) => {
     const qCategory = req.query.category;
     let products;
     if (qNew) {
-      products = await Product.find().sort({ createdAt: -1 }).limit(1);
+      products = await Product.find().sort({ createdAt: -1 }).limit(5);
     } else if (qCategory) {
       products = await Product.find({
         categories: {

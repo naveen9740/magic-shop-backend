@@ -19,16 +19,20 @@ const ProductSchema = new mongoose.Schema(
       required: [true, "Please Enter Product categories"],
     },
     size: {
-      type: String,
+      type: Array,
       required: [true, "Please Enter Product Size"],
     },
     color: {
-      type: String,
+      type: Array,
       required: [true, "Please Enter Product Color"],
     },
     price: {
       type: Number,
       required: [true, "Please Enter Product Price"],
+    },
+    inStock: {
+      type: Boolean,
+      default: true,
     },
   },
   { timestamps: true }
