@@ -4,6 +4,8 @@ const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
+require("dotenv").config();
+
 // Register
 router.post("/register", async (req, res) => {
   try {
@@ -28,6 +30,7 @@ router.post("/register", async (req, res) => {
 // Login
 router.post("/login", async (req, res) => {
   try {
+    console.log(process.env.PASS_SEC);
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     !user &&
@@ -36,7 +39,9 @@ router.post("/login", async (req, res) => {
       user.password,
       process.env.PASS_SEC
     );
+    console.log(hashedPassword);
     const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+    console.log("ooo", OriginalPassword);
 
     OriginalPassword !== password &&
       res.status(401).json({ success: false, message: "Incorrect password" });

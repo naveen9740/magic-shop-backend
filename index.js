@@ -9,11 +9,14 @@ app.use(cors());
 app.use(express.json());
 
 // config env
-dotenv.config({ path: "./config.env" });
+dotenv.config();
 
 // db connection
 mongoose
-  .connect(process.env.URI, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(process.env.MONGODB_URL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
   .then((data) => console.log("mongoose connected"))
   .catch((err) => console.log(err));
 
@@ -36,6 +39,6 @@ app.get("/", (req, res) => {
   res.json({ success: true, message: "Finally server started" });
 });
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`server started at ${process.env.PORT || 5000} now`);
 });
